@@ -1,0 +1,1104 @@
+/*
+ * @Author: MooToons <support@mootoons.com>
+ * @Date: 2023-02-26 00:44:50
+ * @LastEditTime: 2023-03-01 12:33:01
+ * @LastEditors: MooToons
+ * @Link: https://mootoons.com/
+ * @FilePath: \check-lottery-results\assets\style.css
+ */
+
+/**************************
+Grid
+***************************/
+.check-lottery-results-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.check-lottery-results-row {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+}
+
+.check-lottery-results-row--reverse {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+.check-lottery-results-col--reverse {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+.check-lottery-results-col-xs,
+.check-lottery-results-col-xs-1,
+.check-lottery-results-col-xs-2,
+.check-lottery-results-col-xs-3,
+.check-lottery-results-col-xs-4,
+.check-lottery-results-col-xs-5,
+.check-lottery-results-col-xs-6,
+.check-lottery-results-col-xs-7,
+.check-lottery-results-col-xs-8,
+.check-lottery-results-col-xs-9,
+.check-lottery-results-col-xs-10,
+.check-lottery-results-col-xs-11,
+.check-lottery-results-col-xs-12,
+.check-lottery-results-col-xs-offset-0,
+.check-lottery-results-col-xs-offset-1,
+.check-lottery-results-col-xs-offset-2,
+.check-lottery-results-col-xs-offset-3,
+.check-lottery-results-col-xs-offset-4,
+.check-lottery-results-col-xs-offset-5,
+.check-lottery-results-col-xs-offset-6,
+.check-lottery-results-col-xs-offset-7,
+.check-lottery-results-col-xs-offset-8,
+.check-lottery-results-col-xs-offset-9,
+.check-lottery-results-col-xs-offset-10,
+.check-lottery-results-col-xs-offset-11,
+.check-lottery-results-col-xs-offset-12 {
+  box-sizing: border-box;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.check-lottery-results-col-xs {
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  max-width: 100%;
+}
+
+.check-lottery-results-col-xs-1 {
+  -ms-flex-preferred-size: 8.33333333%;
+  flex-basis: 8.33333333%;
+  max-width: 8.33333333%;
+}
+
+.check-lottery-results-col-xs-2 {
+  -ms-flex-preferred-size: 16.66666667%;
+  flex-basis: 16.66666667%;
+  max-width: 16.66666667%;
+}
+
+.check-lottery-results-col-xs-3 {
+  -ms-flex-preferred-size: 25%;
+  flex-basis: 25%;
+  max-width: 25%;
+}
+
+.check-lottery-results-col-xs-4 {
+  -ms-flex-preferred-size: 33.33333333%;
+  flex-basis: 33.33333333%;
+  max-width: 33.33333333%;
+}
+
+.check-lottery-results-col-xs-5 {
+  -ms-flex-preferred-size: 41.66666667%;
+  flex-basis: 41.66666667%;
+  max-width: 41.66666667%;
+}
+
+.check-lottery-results-col-xs-6 {
+  -ms-flex-preferred-size: 50%;
+  flex-basis: 50%;
+  max-width: 50%;
+}
+
+.check-lottery-results-col-xs-7 {
+  -ms-flex-preferred-size: 58.33333333%;
+  flex-basis: 58.33333333%;
+  max-width: 58.33333333%;
+}
+
+.check-lottery-results-col-xs-8 {
+  -ms-flex-preferred-size: 66.66666667%;
+  flex-basis: 66.66666667%;
+  max-width: 66.66666667%;
+}
+
+.check-lottery-results-col-xs-9 {
+  -ms-flex-preferred-size: 75%;
+  flex-basis: 75%;
+  max-width: 75%;
+}
+
+.check-lottery-results-col-xs-10 {
+  -ms-flex-preferred-size: 83.33333333%;
+  flex-basis: 83.33333333%;
+  max-width: 83.33333333%;
+}
+
+.check-lottery-results-col-xs-11 {
+  -ms-flex-preferred-size: 91.66666667%;
+  flex-basis: 91.66666667%;
+  max-width: 91.66666667%;
+}
+
+.check-lottery-results-col-xs-12 {
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+  max-width: 100%;
+}
+
+.check-lottery-results-col-xs-offset-0 {
+  margin-left: 0;
+}
+
+.check-lottery-results-col-xs-offset-1 {
+  margin-left: 8.33333333%;
+}
+
+.check-lottery-results-col-xs-offset-2 {
+  margin-left: 16.66666667%;
+}
+
+.check-lottery-results-col-xs-offset-3 {
+  margin-left: 25%;
+}
+
+.check-lottery-results-col-xs-offset-4 {
+  margin-left: 33.33333333%;
+}
+
+.check-lottery-results-col-xs-offset-5 {
+  margin-left: 41.66666667%;
+}
+
+.check-lottery-results-col-xs-offset-6 {
+  margin-left: 50%;
+}
+
+.check-lottery-results-col-xs-offset-7 {
+  margin-left: 58.33333333%;
+}
+
+.check-lottery-results-col-xs-offset-8 {
+  margin-left: 66.66666667%;
+}
+
+.check-lottery-results-col-xs-offset-9 {
+  margin-left: 75%;
+}
+
+.check-lottery-results-col-xs-offset-10 {
+  margin-left: 83.33333333%;
+}
+
+.check-lottery-results-col-xs-offset-11 {
+  margin-left: 91.66666667%;
+}
+
+.check-lottery-results-start-xs {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  text-align: start;
+}
+
+.check-lottery-results-center-xs {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.check-lottery-results-end-xs {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  text-align: end;
+}
+
+.check-lottery-results-top-xs {
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+}
+
+.check-lottery-results-middle-xs {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.check-lottery-results-bottom-xs {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+}
+
+.check-lottery-results-around-xs {
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+
+.check-lottery-results-between-xs {
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.check-lottery-results-first-xs {
+  -webkit-box-ordinal-group: 0;
+  -ms-flex-order: -1;
+  order: -1;
+}
+
+.check-lottery-results-last-xs {
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: 1;
+  order: 1;
+}
+
+@media only screen and (min-width: 48em) {
+  .check-lottery-results-col-sm,
+  .check-lottery-results-col-sm-1,
+  .check-lottery-results-col-sm-2,
+  .check-lottery-results-col-sm-3,
+  .check-lottery-results-col-sm-4,
+  .check-lottery-results-col-sm-5,
+  .check-lottery-results-col-sm-6,
+  .check-lottery-results-col-sm-7,
+  .check-lottery-results-col-sm-8,
+  .check-lottery-results-col-sm-9,
+  .check-lottery-results-col-sm-10,
+  .check-lottery-results-col-sm-11,
+  .check-lottery-results-col-sm-12,
+  .check-lottery-results-col-sm-offset-0,
+  .check-lottery-results-col-sm-offset-1,
+  .check-lottery-results-col-sm-offset-2,
+  .check-lottery-results-col-sm-offset-3,
+  .check-lottery-results-col-sm-offset-4,
+  .check-lottery-results-col-sm-offset-5,
+  .check-lottery-results-col-sm-offset-6,
+  .check-lottery-results-col-sm-offset-7,
+  .check-lottery-results-col-sm-offset-8,
+  .check-lottery-results-col-sm-offset-9,
+  .check-lottery-results-col-sm-offset-10,
+  .check-lottery-results-col-sm-offset-11,
+  .check-lottery-results-col-sm-offset-12 {
+    box-sizing: border-box;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .check-lottery-results-col-sm {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+
+  .check-lottery-results-col-sm-1 {
+    -ms-flex-preferred-size: 8.33333333%;
+    flex-basis: 8.33333333%;
+    max-width: 8.33333333%;
+  }
+
+  .check-lottery-results-col-sm-2 {
+    -ms-flex-preferred-size: 16.66666667%;
+    flex-basis: 16.66666667%;
+    max-width: 16.66666667%;
+  }
+
+  .check-lottery-results-col-sm-3 {
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+    max-width: 25%;
+  }
+
+  .check-lottery-results-col-sm-4 {
+    -ms-flex-preferred-size: 33.33333333%;
+    flex-basis: 33.33333333%;
+    max-width: 33.33333333%;
+  }
+
+  .check-lottery-results-col-sm-5 {
+    -ms-flex-preferred-size: 41.66666667%;
+    flex-basis: 41.66666667%;
+    max-width: 41.66666667%;
+  }
+
+  .check-lottery-results-col-sm-6 {
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+
+  .check-lottery-results-col-sm-7 {
+    -ms-flex-preferred-size: 58.33333333%;
+    flex-basis: 58.33333333%;
+    max-width: 58.33333333%;
+  }
+
+  .check-lottery-results-col-sm-8 {
+    -ms-flex-preferred-size: 66.66666667%;
+    flex-basis: 66.66666667%;
+    max-width: 66.66666667%;
+  }
+
+  .check-lottery-results-col-sm-9 {
+    -ms-flex-preferred-size: 75%;
+    flex-basis: 75%;
+    max-width: 75%;
+  }
+
+  .check-lottery-results-col-sm-10 {
+    -ms-flex-preferred-size: 83.33333333%;
+    flex-basis: 83.33333333%;
+    max-width: 83.33333333%;
+  }
+
+  .check-lottery-results-col-sm-11 {
+    -ms-flex-preferred-size: 91.66666667%;
+    flex-basis: 91.66666667%;
+    max-width: 91.66666667%;
+  }
+
+  .check-lottery-results-col-sm-12 {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .check-lottery-results-col-sm-offset-0 {
+    margin-left: 0;
+  }
+
+  .check-lottery-results-col-sm-offset-1 {
+    margin-left: 8.33333333%;
+  }
+
+  .check-lottery-results-col-sm-offset-2 {
+    margin-left: 16.66666667%;
+  }
+
+  .check-lottery-results-col-sm-offset-3 {
+    margin-left: 25%;
+  }
+
+  .check-lottery-results-col-sm-offset-4 {
+    margin-left: 33.33333333%;
+  }
+
+  .check-lottery-results-col-sm-offset-5 {
+    margin-left: 41.66666667%;
+  }
+
+  .check-lottery-results-col-sm-offset-6 {
+    margin-left: 50%;
+  }
+
+  .check-lottery-results-col-sm-offset-7 {
+    margin-left: 58.33333333%;
+  }
+
+  .check-lottery-results-col-sm-offset-8 {
+    margin-left: 66.66666667%;
+  }
+
+  .check-lottery-results-col-sm-offset-9 {
+    margin-left: 75%;
+  }
+
+  .check-lottery-results-col-sm-offset-10 {
+    margin-left: 83.33333333%;
+  }
+
+  .check-lottery-results-col-sm-offset-11 {
+    margin-left: 91.66666667%;
+  }
+
+  .check-lottery-results-start-sm {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    text-align: start;
+  }
+
+  .check-lottery-results-center-sm {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .check-lottery-results-end-sm {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    text-align: end;
+  }
+
+  .check-lottery-results-top-sm {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  }
+
+  .check-lottery-results-middle-sm {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .check-lottery-results-bottom-sm {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+  }
+
+  .check-lottery-results-around-sm {
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+  }
+
+  .check-lottery-results-between-sm {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  .check-lottery-results-first-sm {
+    -webkit-box-ordinal-group: 0;
+    -ms-flex-order: -1;
+    order: -1;
+  }
+
+  .check-lottery-results-last-sm {
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+  }
+}
+
+@media only screen and (min-width: 64em) {
+  .check-lottery-results-col-md,
+  .check-lottery-results-col-md-1,
+  .check-lottery-results-col-md-2,
+  .check-lottery-results-col-md-3,
+  .check-lottery-results-col-md-4,
+  .check-lottery-results-col-md-5,
+  .check-lottery-results-col-md-6,
+  .check-lottery-results-col-md-7,
+  .check-lottery-results-col-md-8,
+  .check-lottery-results-col-md-9,
+  .check-lottery-results-col-md-10,
+  .check-lottery-results-col-md-11,
+  .check-lottery-results-col-md-12,
+  .check-lottery-results-col-md-offset-0,
+  .check-lottery-results-col-md-offset-1,
+  .check-lottery-results-col-md-offset-2,
+  .check-lottery-results-col-md-offset-3,
+  .check-lottery-results-col-md-offset-4,
+  .check-lottery-results-col-md-offset-5,
+  .check-lottery-results-col-md-offset-6,
+  .check-lottery-results-col-md-offset-7,
+  .check-lottery-results-col-md-offset-8,
+  .check-lottery-results-col-md-offset-9,
+  .check-lottery-results-col-md-offset-10,
+  .check-lottery-results-col-md-offset-11,
+  .check-lottery-results-col-md-offset-12 {
+    box-sizing: border-box;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .check-lottery-results-col-md {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+
+  .check-lottery-results-col-md-1 {
+    -ms-flex-preferred-size: 8.33333333%;
+    flex-basis: 8.33333333%;
+    max-width: 8.33333333%;
+  }
+
+  .check-lottery-results-col-md-2 {
+    -ms-flex-preferred-size: 16.66666667%;
+    flex-basis: 16.66666667%;
+    max-width: 16.66666667%;
+  }
+
+  .check-lottery-results-col-md-3 {
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+    max-width: 25%;
+  }
+
+  .check-lottery-results-col-md-4 {
+    -ms-flex-preferred-size: 33.33333333%;
+    flex-basis: 33.33333333%;
+    max-width: 33.33333333%;
+  }
+
+  .check-lottery-results-col-md-5 {
+    -ms-flex-preferred-size: 41.66666667%;
+    flex-basis: 41.66666667%;
+    max-width: 41.66666667%;
+  }
+
+  .check-lottery-results-col-md-6 {
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+
+  .check-lottery-results-col-md-7 {
+    -ms-flex-preferred-size: 58.33333333%;
+    flex-basis: 58.33333333%;
+    max-width: 58.33333333%;
+  }
+
+  .check-lottery-results-col-md-8 {
+    -ms-flex-preferred-size: 66.66666667%;
+    flex-basis: 66.66666667%;
+    max-width: 66.66666667%;
+  }
+
+  .check-lottery-results-col-md-9 {
+    -ms-flex-preferred-size: 75%;
+    flex-basis: 75%;
+    max-width: 75%;
+  }
+
+  .check-lottery-results-col-md-10 {
+    -ms-flex-preferred-size: 83.33333333%;
+    flex-basis: 83.33333333%;
+    max-width: 83.33333333%;
+  }
+
+  .check-lottery-results-col-md-11 {
+    -ms-flex-preferred-size: 91.66666667%;
+    flex-basis: 91.66666667%;
+    max-width: 91.66666667%;
+  }
+
+  .check-lottery-results-col-md-12 {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .check-lottery-results-col-md-offset-0 {
+    margin-left: 0;
+  }
+
+  .check-lottery-results-col-md-offset-1 {
+    margin-left: 8.33333333%;
+  }
+
+  .check-lottery-results-col-md-offset-2 {
+    margin-left: 16.66666667%;
+  }
+
+  .check-lottery-results-col-md-offset-3 {
+    margin-left: 25%;
+  }
+
+  .check-lottery-results-col-md-offset-4 {
+    margin-left: 33.33333333%;
+  }
+
+  .check-lottery-results-col-md-offset-5 {
+    margin-left: 41.66666667%;
+  }
+
+  .check-lottery-results-col-md-offset-6 {
+    margin-left: 50%;
+  }
+
+  .check-lottery-results-col-md-offset-7 {
+    margin-left: 58.33333333%;
+  }
+
+  .check-lottery-results-col-md-offset-8 {
+    margin-left: 66.66666667%;
+  }
+
+  .check-lottery-results-col-md-offset-9 {
+    margin-left: 75%;
+  }
+
+  .check-lottery-results-col-md-offset-10 {
+    margin-left: 83.33333333%;
+  }
+
+  .check-lottery-results-col-md-offset-11 {
+    margin-left: 91.66666667%;
+  }
+
+  .check-lottery-results-start-md {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    text-align: start;
+  }
+
+  .check-lottery-results-center-md {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .check-lottery-results-end-md {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    text-align: end;
+  }
+
+  .check-lottery-results-top-md {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  }
+
+  .check-lottery-results-middle-md {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .check-lottery-results-bottom-md {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+  }
+
+  .check-lottery-results-around-md {
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+  }
+
+  .check-lottery-results-between-md {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  .check-lottery-results-first-md {
+    -webkit-box-ordinal-group: 0;
+    -ms-flex-order: -1;
+    order: -1;
+  }
+
+  .check-lottery-results-last-md {
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+  }
+}
+
+@media only screen and (min-width: 75em) {
+  .check-lottery-results-col-lg,
+  .check-lottery-results-col-lg-1,
+  .check-lottery-results-col-lg-2,
+  .check-lottery-results-col-lg-3,
+  .check-lottery-results-col-lg-4,
+  .check-lottery-results-col-lg-5,
+  .check-lottery-results-col-lg-6,
+  .check-lottery-results-col-lg-7,
+  .check-lottery-results-col-lg-8,
+  .check-lottery-results-col-lg-9,
+  .check-lottery-results-col-lg-10,
+  .check-lottery-results-col-lg-11,
+  .check-lottery-results-col-lg-12,
+  .check-lottery-results-col-lg-offset-0,
+  .check-lottery-results-col-lg-offset-1,
+  .check-lottery-results-col-lg-offset-2,
+  .check-lottery-results-col-lg-offset-3,
+  .check-lottery-results-col-lg-offset-4,
+  .check-lottery-results-col-lg-offset-5,
+  .check-lottery-results-col-lg-offset-6,
+  .check-lottery-results-col-lg-offset-7,
+  .check-lottery-results-col-lg-offset-8,
+  .check-lottery-results-col-lg-offset-9,
+  .check-lottery-results-col-lg-offset-10,
+  .check-lottery-results-col-lg-offset-11,
+  .check-lottery-results-col-lg-offset-12 {
+    box-sizing: border-box;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  .check-lottery-results-col-lg {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    max-width: 100%;
+  }
+
+  .check-lottery-results-col-lg-1 {
+    -ms-flex-preferred-size: 8.33333333%;
+    flex-basis: 8.33333333%;
+    max-width: 8.33333333%;
+  }
+
+  .check-lottery-results-col-lg-2 {
+    -ms-flex-preferred-size: 16.66666667%;
+    flex-basis: 16.66666667%;
+    max-width: 16.66666667%;
+  }
+
+  .check-lottery-results-col-lg-3 {
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+    max-width: 25%;
+  }
+
+  .check-lottery-results-col-lg-4 {
+    -ms-flex-preferred-size: 33.33333333%;
+    flex-basis: 33.33333333%;
+    max-width: 33.33333333%;
+  }
+
+  .check-lottery-results-col-lg-5 {
+    -ms-flex-preferred-size: 41.66666667%;
+    flex-basis: 41.66666667%;
+    max-width: 41.66666667%;
+  }
+
+  .check-lottery-results-col-lg-6 {
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+
+  .check-lottery-results-col-lg-7 {
+    -ms-flex-preferred-size: 58.33333333%;
+    flex-basis: 58.33333333%;
+    max-width: 58.33333333%;
+  }
+
+  .check-lottery-results-col-lg-8 {
+    -ms-flex-preferred-size: 66.66666667%;
+    flex-basis: 66.66666667%;
+    max-width: 66.66666667%;
+  }
+
+  .check-lottery-results-col-lg-9 {
+    -ms-flex-preferred-size: 75%;
+    flex-basis: 75%;
+    max-width: 75%;
+  }
+
+  .check-lottery-results-col-lg-10 {
+    -ms-flex-preferred-size: 83.33333333%;
+    flex-basis: 83.33333333%;
+    max-width: 83.33333333%;
+  }
+
+  .check-lottery-results-col-lg-11 {
+    -ms-flex-preferred-size: 91.66666667%;
+    flex-basis: 91.66666667%;
+    max-width: 91.66666667%;
+  }
+
+  .check-lottery-results-col-lg-12 {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .check-lottery-results-col-lg-offset-0 {
+    margin-left: 0;
+  }
+
+  .check-lottery-results-col-lg-offset-1 {
+    margin-left: 8.33333333%;
+  }
+
+  .check-lottery-results-col-lg-offset-2 {
+    margin-left: 16.66666667%;
+  }
+
+  .check-lottery-results-col-lg-offset-3 {
+    margin-left: 25%;
+  }
+
+  .check-lottery-results-col-lg-offset-4 {
+    margin-left: 33.33333333%;
+  }
+
+  .check-lottery-results-col-lg-offset-5 {
+    margin-left: 41.66666667%;
+  }
+
+  .check-lottery-results-col-lg-offset-6 {
+    margin-left: 50%;
+  }
+
+  .check-lottery-results-col-lg-offset-7 {
+    margin-left: 58.33333333%;
+  }
+
+  .check-lottery-results-col-lg-offset-8 {
+    margin-left: 66.66666667%;
+  }
+
+  .check-lottery-results-col-lg-offset-9 {
+    margin-left: 75%;
+  }
+
+  .check-lottery-results-col-lg-offset-10 {
+    margin-left: 83.33333333%;
+  }
+
+  .check-lottery-results-col-lg-offset-11 {
+    margin-left: 91.66666667%;
+  }
+
+  .check-lottery-results-start-lg {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    text-align: start;
+  }
+
+  .check-lottery-results-center-lg {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .check-lottery-results-end-lg {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    text-align: end;
+  }
+
+  .check-lottery-results-top-lg {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  }
+
+  .check-lottery-results-middle-lg {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .check-lottery-results-bottom-lg {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+  }
+
+  .check-lottery-results-around-lg {
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+  }
+
+  .check-lottery-results-between-lg {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  .check-lottery-results-first-lg {
+    -webkit-box-ordinal-group: 0;
+    -ms-flex-order: -1;
+    order: -1;
+  }
+
+  .check-lottery-results-last-lg {
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+  }
+}
+
+.check-lottery-results-mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+/**************************
+Custom block
+***************************/
+.check-lottery-results-today__block {
+  border-radius: 2px;
+  margin-top: 15px;
+}
+
+.check-lottery-results-today__block-header {
+  background-color: #272727;
+  padding: 0.5rem;
+  color: #f8f9fa;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 0.75rem;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.check-lottery-results-today__block-header-icon {
+  width: 28px;
+  vertical-align: middle;
+}
+
+.check-lottery-results-today__block-header-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: normal;
+}
+
+.check-lottery-results-today__block-header-badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.75em;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  background-color: #f2f2f2;
+  color: #272727;
+}
+
+.check-lottery-results-today__block-body {
+  background-color: #f2f2f2;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  padding: 8px;
+}
+
+.check-lottery-results-today__block-body > div {
+  margin-bottom: 8px;
+}
+
+.check-lottery-results-today__block-body > div:last-child {
+  margin-bottom: 0;
+}
+
+/***********************************
+ * Today Card *
+**********************************/
+.check-lottery-results-today__card {
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+}
+
+.check-lottery-results-today__card-header {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  padding: 4px;
+  margin: 0;
+  font-size: 18px;
+  font-weight: normal;
+  background-color: #36384a;
+  color: #eee;
+}
+
+.check-lottery-results-today__card-body {
+  background-color: #fff;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  padding: 4px;
+  font-size: 22px;
+}
+
+/***********************************
+ * Today Sub-Card *
+**********************************/
+.check-lottery-results-today__sub-card-header {
+  background-color: #36384a;
+  padding: 0.25rem;
+  color: #f8f9fa;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.45rem;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+.check-lottery-results-today__sub-card-header-icon {
+  width: 28px;
+  vertical-align: middle;
+}
+
+.check-lottery-results-today__sub-card-header-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.check-lottery-results-today__sub-card-header-badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.65em;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  background-color: #f2f2f2;
+  color: #272727;
+}
+
+.check-lottery-results-today__sub-card-body > .check-lottery-results-row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.check-lottery-results-today__sub-card-body > .check-lottery-results-row > .check-lottery-results-col-xs-6 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.check-lottery-results-today__sub-card-body .check-lottery-results-today__card-header {
+  background-color: #5a5c72;
+  font-size: 16px;
+}
