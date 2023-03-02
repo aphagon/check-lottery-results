@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-25 19:09:43
- * @LastEditTime: 2023-02-26 22:50:12
+ * @LastEditTime: 2023-03-02 11:07:44
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\includes\Controller.php
@@ -50,10 +50,6 @@ final class Controller
             \wp_send_json_error('Invalid type', 400);
         }
 
-        $history = $this->fetch->getHistory($type);
-        \var_dump($history);
-        exit();
-
-        // \wp_send_json_success($this->fetch->getHistory($type), 200);
+        \wp_send_json_success($this->fetch->getHistory($type), 200);
     }
 }

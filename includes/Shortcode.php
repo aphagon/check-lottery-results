@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-24 18:17:00
- * @LastEditTime: 2023-02-28 00:54:58
+ * @LastEditTime: 2023-03-02 01:53:39
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\includes\Shortcode.php
@@ -21,13 +21,11 @@ if (!\defined('ABSPATH')) {
 
 final class Shortcode
 {
-    private Functions $functions;
     private Fetch $fetch;
 
-    public function __construct(Functions $functions, Fetch $fetch)
+    public function __construct(Fetch $fetch)
     {
-        $this->functions = $functions;
-        $this->fetch     = $fetch;
+        $this->fetch = $fetch;
 
         $this->hook();
     }
@@ -74,7 +72,8 @@ final class Shortcode
         $atts = \array_change_key_case((array) $atts, \CASE_LOWER);
         $atts = \shortcode_atts(['type' => 'วันนี้'], $atts);
 
-        if (!\in_array($atts['type'], $this->functions->arrayFlatten($this->fetch->types))) {
+        $types = \array_keys($this->fetch->types);
+        if (!\in_array($atts['type'], $types)) {
             return \sprintf('<h2 style="color:red;">%s</h2>', __('ไม่พบ type นี้', 'check-lottery-results'));
         }
 
@@ -83,7 +82,16 @@ final class Shortcode
         if ('วันนี้' === $atts['type']) {
             return \CheckLotteryResults\Frontend\frontendToday($this->fetch->getToDay());
         } else {
-            return \CheckLotteryResults\Frontend\frontendSingle($this->fetch->getHistory($atts['type']));
+            $type = $this->fetch->types[$atts['type']][0] ?? \null;
+
+            if (\null === $type) {
+                return \sprintf('<h2 style="color:red;">%s</h2>', __('ไม่พบ type นี้', 'check-lottery-results'));
+            }
+
+            return \CheckLotteryResults\Frontend\frontendSingle(
+                $this->fetch->getHistory($type),
+                $this->fetch->types[$atts['type']] ?? \null
+            );
         }
 
         return ob_get_clean();

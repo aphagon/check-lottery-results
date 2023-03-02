@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-21 18:02:42
- * @LastEditTime: 2023-03-01 06:34:48
+ * @LastEditTime: 2023-03-02 01:45:30
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\check-lottery-results.php
@@ -97,7 +97,7 @@ if (!class_exists('CheckLotteryResults')) {
             $this->functions  = new CheckLotteryResults\Functions();
             $this->fetch      = new CheckLotteryResults\Fetch($this->functions);
             $this->controller = new CheckLotteryResults\Controller($this->functions, $this->fetch);
-            $this->shortcode  = new CheckLotteryResults\Shortcode($this->functions, $this->fetch);
+            $this->shortcode  = new CheckLotteryResults\Shortcode($this->fetch);
         }
     }
 }

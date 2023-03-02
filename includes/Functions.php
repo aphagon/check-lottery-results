@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-21 19:48:54
- * @LastEditTime: 2023-02-27 00:41:53
+ * @LastEditTime: 2023-03-02 04:05:27
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\includes\Functions.php
@@ -35,7 +35,12 @@ final class Functions
         \curl_setopt($ch, \CURLOPT_RETURNTRANSFER, \true);
         \curl_setopt($ch, \CURLOPT_TIMEOUT, 10);
         $output = \curl_exec($ch);
+        $status = \curl_getinfo($ch, \CURLINFO_RESPONSE_CODE);
         \curl_close($ch);
+
+        if ($status >= 400) {
+            return '';
+        }
 
         return $output;
     }

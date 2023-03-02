@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-21 19:48:54
- * @LastEditTime: 2023-02-27 22:01:08
+ * @LastEditTime: 2023-03-02 11:22:15
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\includes\Fetch.php
@@ -22,18 +22,20 @@ final class Fetch
 {
     public array $types = [
         'วันนี้',
-        'หวยมาเลเซีย',
+        'หวยมาเลเซีย' => [
+            'หวยมาเลเซีย',
+        ],
         'หวยฮานอย' => [
             'หวยฮานอย',
             'หวยฮานอย HD',
             'หวยฮานอยสตาร์',
-            'หวยฮานอยทีวี',
+            'หวยฮานอย TV',
             'หวยฮานอยกาชาด',
             'หวยฮานอยพิเศษ',
             'หวยฮานอยสามัคคี',
             'หวยฮานอยวีไอพี',
             'หวยฮานอยพัฒนา',
-            'หวยฮานอย EXTRA',
+            'หวยฮานอย Extra',
         ],
         'หวยลาว' => [
             'หวยลาวพัฒนา',
@@ -88,10 +90,42 @@ final class Fetch
         $this->functions = $functions;
     }
 
+    private function getCache(string $key): ?array
+    {
+        $cache = \get_option('check_lottery_result_cache', \null);
+        if (\null === $cache) {
+            return \null;
+        }
+
+        $cache = \json_decode($cache, \true);
+
+        return $cache[$key] ?? \null;
+    }
+
+    private function saveCache(string $key, array $data): void
+    {
+        $cache[$key] = [
+            'expired' => \strtotime('+2 minute', \current_time('timestamp')),
+            'data'    => $data,
+        ];
+
+        \update_option('check_lottery_result_cache', (string) \json_encode($cache));
+    }
+
     public function getToDay(): array
     {
         $results = $this->functions->curl($this->url . '/api/v1/results');
-        $results = \json_decode($results, \true);
+        $cache   = $this->getCache('วันนี้');
+
+        if ('' !== $results || \null === $cache) {
+            $results = \json_decode($results, \true);
+            if (($cache['expired'] ?? 0) <= \current_time('timestamp')) {
+                $this->saveCache('วันนี้', $results);
+            }
+        } else {
+            $results = $cache['data'];
+        }
+
         $newData = [];
 
         $count = \count($results);
@@ -108,7 +142,16 @@ final class Fetch
     public function getHistory(string $type): array
     {
         $results = $this->functions->curl($this->url . '/api/v1/history/' . $type);
-        $results = \json_decode($results, \true);
+        $cache   = $this->getCache($type);
+
+        if ('' !== $results || \null === $cache) {
+            $results = \json_decode($results, \true);
+            if (($cache['expired'] ?? 0) <= \current_time('timestamp')) {
+                $this->saveCache($type, $results);
+            }
+        } else {
+            $results = $cache['data'];
+        }
 
         $this->findOrUploadIcon($results);
 
