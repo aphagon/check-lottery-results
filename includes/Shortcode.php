@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-24 18:17:00
- * @LastEditTime: 2023-03-03 03:24:37
+ * @LastEditTime: 2023-03-03 04:22:53
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\includes\Shortcode.php
@@ -82,7 +82,7 @@ final class Shortcode
         if ('วันนี้' === $atts['type']) {
             return \CheckLotteryResults\Frontend\frontendToday($this->fetch->getToDay());
         } elseif ('หวยรัฐบาลไทย' === $atts['type']) {
-            return \CheckLotteryResults\Frontend\frontendSingleLottoThai(
+            return \CheckLotteryResults\Frontend\frontendSingleThaiLotto(
                 $this->fetch->getLotteryThai(),
                 $this->fetch->getLotteryThaiListYears()
             );

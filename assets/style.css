@@ -1,7 +1,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-26 00:44:50
- * @LastEditTime: 2023-03-03 01:20:13
+ * @LastEditTime: 2023-03-03 04:50:24
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\assets\style.css
@@ -1196,18 +1196,20 @@ Custom block
   background-color: #ffe8cd;
 }
 
-/* form search */
-.check-lottery-results-form {
+/**************************
+Form search
+***************************/
+.check-lottery-results-single-thai-lotto__form {
   width: 100%;
   display: flex;
   align-items: stretch;
   margin: 25px 0;
 }
-.check-lottery-results-form-column {
+.check-lottery-results-single-thai-lotto__form-column {
   flex-grow: 1;
 }
-.check-lottery-results-form-select,
-.check-lottery-results-form-input {
+.check-lottery-results-single-thai-lotto__form-select,
+.check-lottery-results-single-thai-lotto__form-input {
   padding: 3px 10px 3px 10px;
   margin: 0px;
   width: 100%;
@@ -1222,12 +1224,12 @@ Custom block
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-.check-lottery-results-form-select {
+.check-lottery-results-single-thai-lotto__form-select {
   cursor: pointer;
   text-align-last: center;
 }
-.check-lottery-results-form-button[type="button"],
-.check-lottery-results-form-button[type="submit"] {
+.check-lottery-results-single-thai-lotto__form-button[type="button"],
+.check-lottery-results-single-thai-lotto__form-button[type="submit"] {
   display: inline-block;
   cursor: pointer;
   width: 100%;
@@ -1244,14 +1246,24 @@ Custom block
   -webkit-appearance: none;
   border-radius: 0;
 }
-.check-lottery-results-form-button[type="button"]:hover,
-.check-lottery-results-form-button[type="submit"]:hover {
+.check-lottery-results-single-thai-lotto__form-button[type="button"]:hover,
+.check-lottery-results-single-thai-lotto__form-button[type="submit"]:hover {
   color: #ececec;
   background-color: #353535 !important;
 }
 
-/** Thai Lotto **/
-.check-lottery-results-single-lotto-thai__title {
+/**************************
+Thai Lotto
+***************************/
+.check-lottery-results-single-thai-lotto__message-in-text {
+  text-align: center;
+  padding: 15px;
+  font-size: 20px;
+  background-color: #f0f0f0;
+  color: #d12530;
+  border: 1px solid #d1d1d1;
+}
+.check-lottery-results-single-thai-lotto__title {
   line-height: 1.25;
   text-align: center;
   font-size: 2.8em;
@@ -1260,7 +1272,7 @@ Custom block
   font-weight: normal;
   color: #000;
 }
-.check-lottery-results-single-lotto-thai__title-sub {
+.check-lottery-results-single-thai-lotto__title-sub {
   color: #d12530;
   display: block;
   line-height: 1.25;
@@ -1269,11 +1281,11 @@ Custom block
   font-weight: normal;
   margin-bottom: 10px;
 }
-.check-lottery-results-single-lotto-thai__resize {
+.check-lottery-results-single-thai-lotto__resize {
   font-size: 1.4rem;
   background-color: white;
 }
-.check-lottery-results-single-lotto-thai__sec {
+.check-lottery-results-single-thai-lotto__sec {
   border-top: 1px solid #e2e2e2;
   text-align: center;
   margin-bottom: 40px;
@@ -1289,78 +1301,78 @@ Custom block
   color: white;
   padding: 6px 0;
 }
-.check-lottery-results-single-lotto-thai__number--first {
+.check-lottery-results-single-thai-lotto__number--first {
   font-size: 1.35em;
   color: #d12530;
   line-height: 2.3;
 }
-.check-lottery-results-single-lotto-thai__number {
+.check-lottery-results-single-thai-lotto__number {
   font-weight: normal;
   font-size: 1em;
   line-height: 2;
   color: #464646;
 }
-.check-lottery-results-single-lotto-thai__sec .check-lottery-results-single-lotto-thai__table {
+.check-lottery-results-single-thai-lotto__sec .check-lottery-results-single-thai-lotto__table {
   border-top: 1px solid #dadada;
   border-right: 1px solid #dadada;
   display: flex;
 }
-.check-lottery-results-single-lotto-thai__sec .check-lottery-results-single-lotto-thai__table:after,
-.check-lottery-results-single-lotto-thai__sec .check-lottery-results-single-lotto-thai__table:before,
-.check-lottery-results-single-lotto-thai__sec--nearby:after,
-.check-lottery-results-single-lotto-thai__sec--nearby:before,
-.check-lottery-results-single-lotto-thai__sec .check-lottery-results-single-lotto-thai__box-item:after,
-.check-lottery-results-single-lotto-thai__sec .check-lottery-results-single-lotto-thai__box-item:before {
+.check-lottery-results-single-thai-lotto__sec .check-lottery-results-single-thai-lotto__table:after,
+.check-lottery-results-single-thai-lotto__sec .check-lottery-results-single-thai-lotto__table:before,
+.check-lottery-results-single-thai-lotto__sec--nearby:after,
+.check-lottery-results-single-thai-lotto__sec--nearby:before,
+.check-lottery-results-single-thai-lotto__sec .check-lottery-results-single-thai-lotto__box-item:after,
+.check-lottery-results-single-thai-lotto__sec .check-lottery-results-single-thai-lotto__box-item:before {
   content: " ";
   display: table;
 }
-.check-lottery-results-single-lotto-thai__sec .check-lottery-results-single-lotto-thai__table:after,
-.check-lottery-results-single-lotto-thai__sec--nearby:after,
-.check-lottery-results-single-lotto-thai__sec .check-lottery-results-single-lotto-thai__box-item:after {
+.check-lottery-results-single-thai-lotto__sec .check-lottery-results-single-thai-lotto__table:after,
+.check-lottery-results-single-thai-lotto__sec--nearby:after,
+.check-lottery-results-single-thai-lotto__sec .check-lottery-results-single-thai-lotto__box-item:after {
   clear: both;
 }
-.check-lottery-results-single-lotto-thai__sec .check-lottery-results-single-lotto-thai__column {
+.check-lottery-results-single-thai-lotto__sec .check-lottery-results-single-thai-lotto__column {
   flex: 1 1 25%;
   text-align: center;
   border-left: 1px solid #dadada;
   border-bottom: 1px solid #dadada;
   height: 150px;
 }
-.check-lottery-results-single-lotto-thai__sec .check-lottery-results-single-lotto-thai__column .title__reward {
+.check-lottery-results-single-thai-lotto__sec .check-lottery-results-single-thai-lotto__column .title__reward {
   padding: 5px;
   line-height: 35px;
   margin: 0;
   background-color: #272727;
 }
-.check-lottery-results-single-lotto-thai__sec
-  .check-lottery-results-single-lotto-thai__column
+.check-lottery-results-single-thai-lotto__sec
+  .check-lottery-results-single-thai-lotto__column
   .title__reward
   .default-font--reward {
   color: #ffffff;
   font-size: 18px;
   display: block;
 }
-.check-lottery-results-single-lotto-thai__sec .title__reward small {
+.check-lottery-results-single-thai-lotto__sec .title__reward small {
   color: #cccccc;
   font-size: 13px;
   display: block;
 }
-.check-lottery-results-single-lotto-thai__sec .check-lottery-results-single-lotto-thai__box-item--bg {
+.check-lottery-results-single-thai-lotto__sec .check-lottery-results-single-thai-lotto__box-item--bg {
   background: #f0f0f0;
 }
-.check-lottery-results-single-lotto-thai__sec
-  .check-lottery-results-single-lotto-thai__table
-  .check-lottery-results-single-lotto-thai__number {
+.check-lottery-results-single-thai-lotto__sec
+  .check-lottery-results-single-thai-lotto__table
+  .check-lottery-results-single-thai-lotto__number {
   padding: 0 10px;
   font-size: 1.1em;
   font-weight: 700;
   line-height: 2.9;
 }
 
-.check-lottery-results-single-lotto-thai__sec--nearby {
+.check-lottery-results-single-thai-lotto__sec--nearby {
   padding: 15px 0;
 }
-.check-lottery-results-single-lotto-thai__sec--nearby .title__reward {
+.check-lottery-results-single-thai-lotto__sec--nearby .title__reward {
   float: left;
   width: 36%;
   text-align: left;
@@ -1369,15 +1381,15 @@ Custom block
   font-size: 0.65em;
   background-color: white;
 }
-.check-lottery-results-single-lotto-thai__sec--nearby .title__reward p {
+.check-lottery-results-single-thai-lotto__sec--nearby .title__reward p {
   margin: 0;
   padding: 0;
   color: #464646;
 }
-.check-lottery-results-single-lotto-thai__sec--nearby .title__reward p:first-child {
+.check-lottery-results-single-thai-lotto__sec--nearby .title__reward p:first-child {
   color: #d12530;
 }
-.check-lottery-results-single-lotto-thai__sec--nearby .check-lottery-results-single-lotto-thai__number {
+.check-lottery-results-single-thai-lotto__sec--nearby .check-lottery-results-single-thai-lotto__number {
   float: left;
   width: 31%;
   display: block;
@@ -1386,30 +1398,125 @@ Custom block
   font-weight: bold;
 }
 
-.check-lottery-results-single-lotto-thai__sec
-  .check-lottery-results-single-lotto-thai__box-item
-  .check-lottery-results-single-lotto-thai__number {
+.check-lottery-results-single-thai-lotto__sec
+  .check-lottery-results-single-thai-lotto__box-item
+  .check-lottery-results-single-thai-lotto__number {
   width: 20%;
   float: left;
   padding: 13px 0;
   font-weight: 700;
 }
 
-.check-lottery-results-single-lotto-thai__sec--font-mini
-  .check-lottery-results-single-lotto-thai__box-item:nth-child(odd) {
+.check-lottery-results-single-thai-lotto__sec--font-mini
+  .check-lottery-results-single-thai-lotto__box-item:nth-child(odd) {
   background-color: #f0f0f0;
 }
 
-.check-lottery-results-single-lotto-thai__sec--font-mini
-  .check-lottery-results-single-lotto-thai__box-item
-  .check-lottery-results-single-lotto-thai__number {
+.check-lottery-results-single-thai-lotto__sec--font-mini
+  .check-lottery-results-single-thai-lotto__box-item
+  .check-lottery-results-single-thai-lotto__number {
   font-size: 0.75em;
   font-weight: normal;
   line-height: 1.5;
 }
 
+/**************************
+BackDate ThaiLotto
+***************************/
+.check-lottery-results-single-thai-lotto__backdate {
+  text-align: center;
+  width: 100%;
+  background-color: #eee;
+  margin-bottom: 15px;
+}
+.check-lottery-results-single-thai-lotto__backdate__title {
+  background-image: -webkit-linear-gradient(#555, #333);
+  background-image: -ms-linear-gradient(#555, #333);
+  background-image: -moz-linear-gradient(#555, #333);
+  background-image: -o-linear-gradient(#555, #333);
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  padding: 0.5rem;
+  text-align: center;
+  color: #f8f9fa;
+  font-weight: normal;
+}
+.check-lottery-results-single-thai-lotto__backdate__date {
+  /*     font-size: 18px; */
+  color: #444444;
+  font-weight: normal;
+  margin-top: 1.2em;
+  margin-bottom: 1.2em;
+}
+.check-lottery-results-single-thai-lotto__backdate__date-sub {
+  margin: 1.2em 0;
+  font-size: 1.25em;
+}
+
+.check-lottery-results-single-thai-lotto__backdate__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+  align-content: center;
+  /* padding: 1.2em 0; */
+}
+.check-lottery-results-single-thai-lotto__backdate__content-column {
+  margin: 4px;
+  padding: 14px 5px 12px 5px;
+  font-size: 1.5em;
+  flex: 1 1 23%;
+  font-weight: bold;
+  color: #222222;
+  text-decoration: none;
+  background-color: #ffffff;
+  border: 0px solid #222222;
+  border-radius: 3px;
+  -webkit-appearance: none;
+}
+
+.check-lottery-results-single-thai-lotto__backdate__content-column__title {
+  font-size: 15px;
+  color: #999999;
+  font-weight: normal;
+}
+
+.check-lottery-results-single-thai-lotto__backdate__content-column__text {
+  margin: 0;
+}
+
+.check-lottery-results-single-thai-lotto__block-backdate {
+  display: flex;
+  flex-wrap: wrap;
+}
+.check-lottery-results-single-thai-lotto__block-backdate > h4 {
+  flex: 1 1 100%;
+  font-size: 1.5em;
+}
+
+.check-lottery-results-single-thai-lotto__button-backdate {
+  flex: 1 1 19%;
+  white-space: nowrap;
+  margin: 2px;
+  padding: 12px 0px 10px 0px;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: center;
+  color: #222222;
+  text-decoration: none;
+  -webkit-appearance: none;
+}
+
+.check-lottery-results-single-thai-lotto__button-backdate {
+  flex: 1 1 19%;
+}
+
+.check-lottery-results-single-thai-lotto__button-backdate > a {
+  text-decoration: none;
+}
+
 @media only screen and (max-width: 426px) {
-  .lotto-results-button-backdate {
+  .check-lottery-results-single-thai-lotto__button-backdate {
     flex: 1 1 48%;
   }
 
@@ -1419,22 +1526,22 @@ Custom block
     font-size: 0.75em;
     line-height: 1.5;
   }
-  .check-lottery-results-single-lotto-thai__number {
+  .check-lottery-results-single-thai-lotto__number {
     font-size: 0.7em;
   }
-  .check-lottery-results-single-lotto-thai__sec--font-mini
-    .check-lottery-results-single-lotto-thai__box-item
-    .check-lottery-results-single-lotto-thai__number {
+  .check-lottery-results-single-thai-lotto__sec--font-mini
+    .check-lottery-results-single-thai-lotto__box-item
+    .check-lottery-results-single-thai-lotto__number {
     font-size: 0.65em;
   }
-  .check-lottery-results-single-lotto-thai__sec .check-lottery-results-single-lotto-thai__table {
+  .check-lottery-results-single-thai-lotto__sec .check-lottery-results-single-thai-lotto__table {
     flex-direction: column;
   }
-  .check-lottery-results-single-lotto-thai__sec--nearby .title__reward {
+  .check-lottery-results-single-thai-lotto__sec--nearby .title__reward {
     width: 100%;
     text-align: center;
   }
-  .check-lottery-results-single-lotto-thai__sec--nearby .check-lottery-results-single-lotto-thai__number {
+  .check-lottery-results-single-thai-lotto__sec--nearby .check-lottery-results-single-thai-lotto__number {
     width: 50%;
   }
 }
