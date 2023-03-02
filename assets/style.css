@@ -1,7 +1,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-26 00:44:50
- * @LastEditTime: 2023-03-02 16:43:20
+ * @LastEditTime: 2023-03-03 01:20:13
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\assets\style.css
@@ -1239,7 +1239,7 @@ Custom block
   color: #ffffff;
   text-align: center;
   line-height: 150%;
-  background-color: #272726 !important;
+  background-color: #272727 !important;
   border: 0px;
   -webkit-appearance: none;
   border-radius: 0;
@@ -1247,7 +1247,7 @@ Custom block
 .check-lottery-results-form-button[type="button"]:hover,
 .check-lottery-results-form-button[type="submit"]:hover {
   color: #ececec;
-  background-color: #383837 !important;
+  background-color: #353535 !important;
 }
 
 /** Thai Lotto **/

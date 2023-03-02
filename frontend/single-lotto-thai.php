@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-03-02 15:36:33
- * @LastEditTime: 2023-03-02 16:17:57
+ * @LastEditTime: 2023-03-03 04:05:07
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\frontend\single-lotto-thai.php
@@ -18,9 +18,10 @@ if (!\defined('ABSPATH')) {
     exit;
 }
 
-
-function frontendSingleLottoThai(array $data): string
+function frontendSingleLottoThai(array $data, ?array $listYears = \null): string
 {
+    $months = ['', 'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน', 'กรกฏาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'];
+
     \ob_start();
 
 ?>
@@ -38,19 +39,92 @@ function frontendSingleLottoThai(array $data): string
                 <button id="CheckLotteryResultsSubmit" type="submit" class="check-lottery-results-form-button">ตรวจผลรางวัล</button>
             </div>
         </form>
+        <div id="CheckLotteryResultsMessage" style="margin-bottom: 30px"></div>
+
+        <?php
+        $jsonYears = [];
+        foreach ($listYears as $y => $histories) :
+            foreach ($histories['result'] as $history) :
+                list($year, $month, $day) = \explode('-', $history);
+
+                $day   = \intval($day);
+                $month = \intval($month);
+                $year  = \intval($year);
+
+                $jsonYears[$y][] = \sprintf('%d %s %d', $day, $months[$month], ($year + 543));
+            endforeach;
+        endforeach;
+        ?>
+
 
         <div class="check-lottery-results-single-lotto-thai__resize">
             <div class="check-lottery-results-single-lotto-thai__sec">
-                <?php // lottery_result_thai_top_reward_output($prizes); 
-                ?>
+
+                <div class="check-lottery-results-single-lotto-thai__table">
+                    <div class="check-lottery-results-single-lotto-thai__column">
+                        <p class="title__reward check-lottery-results-single-lotto-thai__box-item--bg">
+                            <span class="default-font--reward">รางวัลที่ 1</span>
+                            <small>รางวัลละ 6,000,000 บาท</small>
+                        </p>
+                        <p>
+                            <strong class="check-lottery-results-single-lotto-thai__number--first">
+                                <?php echo !empty($data['result'][1]['data'][0]) ? $data['result'][1]['data'][0] : 'XXXXXX'; ?>
+                            </strong>
+                        </p>
+                    </div>
+                    <div class="check-lottery-results-single-lotto-thai__column">
+                        <p class="title__reward check-lottery-results-single-lotto-thai__box-item--bg">
+                            <span class="default-font--reward">เลขหน้า 3 ตัว</span>
+                            <small>2 รางวัลๆ ละ 4,000 บาท</small>
+                        </p>
+                        <p>
+                            <strong class="check-lottery-results-single-lotto-thai__number">
+                                <?php echo !empty($data['result'][10]['data'][0]) ? $data['result'][10]['data'][0] : 'XXXXXX'; ?>
+                            </strong>
+                            <strong class="check-lottery-results-single-lotto-thai__number">
+                                <?php echo !empty($data['result'][10]['data'][1]) ? $data['result'][10]['data'][1] : 'XXXXXX'; ?>
+                            </strong>
+                        </p>
+                    </div>
+                    <div class="check-lottery-results-single-lotto-thai__column">
+                        <p class="title__reward check-lottery-results-single-lotto-thai__box-item--bg">
+                            <span class="default-font--reward">เลขท้าย 3 ตัว</span>
+                            <small>2 รางวัลๆ ละ 4,000 บาท</small>
+                        </p>
+                        <p>
+                            <strong class="check-lottery-results-single-lotto-thai__number">
+                                <?php echo !empty($data['result'][6]['data'][0]) ? $data['result'][6]['data'][0] : 'XXXXXX'; ?>
+                            </strong>
+                            <strong class="check-lottery-results-single-lotto-thai__number">
+                                <?php echo !empty($data['result'][6]['data'][1]) ? $data['result'][6]['data'][1] : 'XXXXXX'; ?>
+                            </strong>
+                        </p>
+                    </div>
+                    <div class="check-lottery-results-single-lotto-thai__column">
+                        <p class="title__reward check-lottery-results-single-lotto-thai__box-item--bg">
+                            <span class="default-font--reward">เลขท้าย 2 ตัว</span>
+                            <small>1 รางวัลๆ ละ 2,000 บาท</small>
+                        </p>
+                        <p>
+                            <strong class="check-lottery-results-single-lotto-thai__number">
+                                <?php echo !empty($data['result'][7]['data'][0]) ? $data['result'][7]['data'][0] : 'XXXXXX'; ?>
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+
                 <div class="check-lottery-results-single-lotto-thai__sec--nearby">
                     <div class="title__reward">
                         <p>รางวัลข้างเคียงรางวัลที่ 1</p>
                         <p>2 รางวัลๆ ละ 100,000 บาท</p>
                     </div>
                     <div>
-                        <strong class="check-lottery-results-single-lotto-thai__number"><?php echo !empty($data['result'][11]['data'][0]) ? $data['result'][11]['data'][0] : 'XXXXXX'; ?></strong>
-                        <strong class="check-lottery-results-single-lotto-thai__number"><?php echo !empty($data['result'][11]['data'][1]) ? $data['result'][11]['data'][1] : 'XXXXXX'; ?></strong>
+                        <strong class="check-lottery-results-single-lotto-thai__number">
+                            <?php echo !empty($data['result'][11]['data'][0]) ? $data['result'][11]['data'][0] : 'XXXXXX'; ?>
+                        </strong>
+                        <strong class="check-lottery-results-single-lotto-thai__number">
+                            <?php echo !empty($data['result'][11]['data'][1]) ? $data['result'][11]['data'][1] : 'XXXXXX'; ?>
+                        </strong>
                     </div>
                 </div>
             </div>
@@ -72,7 +146,9 @@ function frontendSingleLottoThai(array $data): string
                     </div>
                     <div class="check-lottery-results-single-lotto-thai__box-item">
                     <?php endif; ?>
-                    <span class="check-lottery-results-single-lotto-thai__number"><?php echo !empty($lotto) ? $lotto : 'XXXXXX'; ?></span>
+                    <span class="check-lottery-results-single-lotto-thai__number">
+                        <?php echo !empty($lotto) ? $lotto : 'XXXXXX'; ?>
+                    </span>
                 <?php endforeach; ?>
                     </div>
                 </div>

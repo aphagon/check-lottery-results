@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-21 19:48:54
- * @LastEditTime: 2023-03-02 04:05:27
+ * @LastEditTime: 2023-03-03 04:04:10
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\includes\Functions.php
@@ -20,31 +20,6 @@ if (!\defined('ABSPATH')) {
 
 final class Functions
 {
-    /**
-     * @return string|bool
-     */
-    public function curl(string $url)
-    {
-        $ch = \curl_init();
-        \curl_setopt($ch, \CURLOPT_URL, $url);
-        \curl_setopt($ch, \CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36');
-        \curl_setopt($ch, \CURLOPT_SSL_VERIFYPEER, \false);
-        \curl_setopt($ch, \CURLOPT_FAILONERROR, \true);
-        \curl_setopt($ch, \CURLOPT_FOLLOWLOCATION, \true);
-        \curl_setopt($ch, \CURLOPT_AUTOREFERER, \true);
-        \curl_setopt($ch, \CURLOPT_RETURNTRANSFER, \true);
-        \curl_setopt($ch, \CURLOPT_TIMEOUT, 10);
-        $output = \curl_exec($ch);
-        $status = \curl_getinfo($ch, \CURLINFO_RESPONSE_CODE);
-        \curl_close($ch);
-
-        if ($status >= 400) {
-            return '';
-        }
-
-        return $output;
-    }
-
     /**
      * Flattens a multidimensional array into a single-dimensional array.
      *

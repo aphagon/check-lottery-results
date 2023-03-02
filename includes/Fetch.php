@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-21 19:48:54
- * @LastEditTime: 2023-03-02 16:04:33
+ * @LastEditTime: 2023-03-03 04:00:58
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\includes\Fetch.php
@@ -42,7 +42,7 @@ final class Fetch
         ],
         'หวยลาว' => [
             'หวยลาวพัฒนา',
-            'หวยลาว EXTRA',
+            'หวยลาว Extra',
             'หวยลาวทีวี',
             'หวยลาว HD',
             'หวยลาวสตาร์',
@@ -93,6 +93,31 @@ final class Fetch
         $this->functions = $functions;
     }
 
+    /**
+     * @return string|bool
+     */
+    public function curl(string $url)
+    {
+        $ch = \curl_init();
+        \curl_setopt($ch, \CURLOPT_URL, $url);
+        \curl_setopt($ch, \CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36');
+        \curl_setopt($ch, \CURLOPT_SSL_VERIFYPEER, \false);
+        \curl_setopt($ch, \CURLOPT_FAILONERROR, \true);
+        \curl_setopt($ch, \CURLOPT_FOLLOWLOCATION, \true);
+        \curl_setopt($ch, \CURLOPT_AUTOREFERER, \true);
+        \curl_setopt($ch, \CURLOPT_RETURNTRANSFER, \true);
+        \curl_setopt($ch, \CURLOPT_TIMEOUT, 15);
+        $output = \curl_exec($ch);
+        $status = \curl_getinfo($ch, \CURLINFO_RESPONSE_CODE);
+        \curl_close($ch);
+
+        if ($status >= 400) {
+            return '';
+        }
+
+        return $output;
+    }
+
     private function getCache(string $key): ?array
     {
         $cache = \get_option('check_lottery_result_cache', \null);
@@ -107,6 +132,9 @@ final class Fetch
 
     private function saveCache(string $key, array $data): void
     {
+        $cache = \get_option('check_lottery_result_cache', \null);
+        $cache = $cache ? \json_decode($cache, \true) : [];
+
         $cache[$key] = [
             'expired' => \strtotime('+2 minute', \current_time('timestamp')),
             'data'    => $data,
@@ -117,7 +145,7 @@ final class Fetch
 
     public function getToDay(): array
     {
-        $results = $this->functions->curl($this->url . '/api/v1/results');
+        $results = $this->curl($this->url . '/api/v1/results');
         $cache   = $this->getCache('วันนี้');
 
         if ('' !== $results || \null === $cache) {
@@ -144,7 +172,7 @@ final class Fetch
 
     public function getHistory(string $type): array
     {
-        $results = $this->functions->curl($this->url . '/api/v1/history/' . $type);
+        $results = $this->curl($this->url . '/api/v1/history/' . $type);
         $cache   = $this->getCache($type);
 
         if ('' !== $results || \null === $cache) {
@@ -161,29 +189,98 @@ final class Fetch
         return $results;
     }
 
-    public function getLotteryThai(?string $date = \null): array
+    public function getLotteryThai(?string $date = \null): ?array
     {
-        $results = $this->functions->curl(
-            'https://www.thairath.co.th/api-lottery/?date=' . $date ?? \current_time('Y-m-d')
-        );
+        $date    = $date ?? \current_time('Y-m-d');
+        $cache   = $this->getCache('หวยรัฐบาลไทย');
+        $expired = $cache['data'][$date]['expired'] ?? 0;
 
-        $cache = $this->getCache('หวยรัฐบาลไทย');
+        if ($expired <= \current_time('timestamp')) {
+            $response = $this->curl('https://www.thairath.co.th/api-lottery/?date=' . $date);
 
-        if ('' !== $results || \null === $cache) {
-            $results = \json_decode($results, \true);
-            $results = [
-                'title'  => $results['data']['lotteryDateTitle'],
-                'result' => $results['data']['prizes'],
+            if (empty($response)) {
+                return \null;
+            }
+
+            $response = \json_decode($response, \true);
+
+            $newData = [];
+            $newData[$date] = [
+                'title'   => $response['data']['lotteryDateTitle'],
+                'result'  => $response['data']['prizes'],
+                'date'    => $date,
+                'expired' => \strtotime('+2 minute', \current_time('timestamp')),
             ];
 
-            if (($cache['expired'] ?? 0) <= \current_time('timestamp')) {
-                $this->saveCache('หวยรัฐบาลไทย', $results);
-            }
+            $this->saveCache('หวยรัฐบาลไทย', $newData);
+
+            $results = $newData[$date];
         } else {
-            $results = $cache['data'];
+            $results = $cache['data'][$date] ?? \null;
         }
 
         return $results;
+    }
+
+    public function getLotteryThaiListYears(): array
+    {
+        $cache       = $this->getCache('หวยรัฐบาลไทยรายการเดือน');
+        $updateCache = \false;
+
+        foreach (\range(\gmdate('Y', \current_time('timestamp')), 2016) as $year) {
+            $expired = $cache['data'][$year]['expired'] ?? 0;
+
+            if (-1 === (int) $expired) {
+                continue;
+            }
+
+            if ($expired <= \current_time('timestamp')) {
+                $ch = \curl_init();
+                \curl_setopt($ch, \CURLOPT_URL, 'https://www.glo.or.th/api/lottery/getPeriodsByYear');
+                \curl_setopt($ch, \CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36');
+                \curl_setopt($ch, \CURLOPT_REFERER, 'https://www.glo.or.th');
+                \curl_setopt($ch, \CURLOPT_CUSTOMREQUEST, 'POST');
+                \curl_setopt($ch, \CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
+                \curl_setopt($ch, \CURLOPT_POSTFIELDS, \json_encode([
+                    'year' => \intval($year),
+                    'type' => 'CHECKED',
+                ]));
+                \curl_setopt($ch, \CURLOPT_FOLLOWLOCATION, \true);
+                \curl_setopt($ch, \CURLOPT_SSL_VERIFYPEER, \false);
+                \curl_setopt($ch, \CURLOPT_RETURNTRANSFER, \true);
+                \curl_setopt($ch, \CURLOPT_TIMEOUT, 15);
+                $response   = \curl_exec($ch);
+                $statusCode = \curl_getinfo($ch, \CURLINFO_RESPONSE_CODE);
+                \curl_close($ch);
+
+                if (empty($response) || $statusCode >= 400) {
+                    continue;
+                }
+
+                $response = \json_decode($response, \true);
+                if (empty($response['response']['result'])) {
+                    continue;
+                }
+
+                $histories = [];
+                foreach ($response['response']['result'] as $history) {
+                    $histories[] = $history['date'];
+                }
+
+                $expired = $year == \date('Y', \current_time('timestamp')) ? 60 * 24 : -1;
+
+                $cache['data'][$year]['expired'] = $expired; // 1 day.
+                $cache['data'][$year]['result']  = \array_unique($histories);
+
+                $updateCache = \true;
+            }
+        }
+
+        if (\true === $updateCache) {
+            $this->saveCache('หวยรัฐบาลไทยรายการเดือน', $cache['data']);
+        }
+
+        return $cache['data'] ?? [];
     }
 
     private function findOrUploadIcon(array &$data): void
