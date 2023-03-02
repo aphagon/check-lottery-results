@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-27 01:44:33
- * @LastEditTime: 2023-03-02 10:46:36
+ * @LastEditTime: 2023-03-02 15:20:00
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\frontend\single.php
@@ -43,14 +43,14 @@ function frontendSingle(array $data, ?array $sidebars = \null): string
         <div class="check-lottery-results-row">
 
             <?php if (!empty($sidebars)) : ?>
-                <aside class="check-lottery-results-col-md-2 check-lottery-results-single__sidebar">
+                <aside class="check-lottery-results-col-sm-<?php echo !empty($sidebars) ? '3' : '12'; ?> check-lottery-results-col-xs-12 check-lottery-results-single__sidebar">
                     <?php foreach ($sidebars as $i => $sidebar) : ?>
                         <a href="javascript:void(0);" class="<?php echo 0 === $i ? 'check-lottery-results-single__sidebar-link-active' : ''; ?>"><?php echo $sidebar; ?></a>
                     <?php endforeach; ?>
                 </aside>
             <?php endif; ?>
 
-            <article class="check-lottery-results-col-md-<?php echo !empty($sidebars) ? '10' : '12'; ?>" style="padding: 0px;">
+            <article id="checkLotteryResultsContent" class="check-lottery-results-col-sm-<?php echo !empty($sidebars) ? '9' : '12'; ?> check-lottery-results-col-xs-12" style="padding: 0px;">
                 <section class="check-lottery-results-single__card">
                     <h4 class="check-lottery-results-single__card-title">ผลหวยย้อนหลัง</h4>
 

@@ -1,7 +1,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-26 00:44:50
- * @LastEditTime: 2023-03-02 13:11:03
+ * @LastEditTime: 2023-03-02 15:20:36
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\assets\script.js
@@ -18,6 +18,13 @@ jQuery(document).ready(function ($) {
 
     $(".check-lottery-results-single__sidebar a").removeClass("check-lottery-results-single__sidebar-link-active");
     $(this).addClass("check-lottery-results-single__sidebar-link-active");
+
+    $("html, body").animate(
+      {
+        scrollTop: $("#checkLotteryResultsContent").offset().top,
+      },
+      500
+    );
 
     $.ajax({
       method: "GET",
