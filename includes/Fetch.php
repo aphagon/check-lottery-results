@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-21 19:48:54
- * @LastEditTime: 2023-03-03 04:00:58
+ * @LastEditTime: 2023-03-03 05:09:37
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\includes\Fetch.php
@@ -25,8 +25,8 @@ final class Fetch
         'หวยมาเลเซีย' => [
             'หวยมาเลเซีย',
         ],
-        'หวยรัฐบาลไทย' => [
-            'หวยรัฐบาลไทย',
+        'หวยรัฐบาล' => [
+            'หวยรัฐบาล',
         ],
         'หวยฮานอย' => [
             'หวยฮานอย',
@@ -192,7 +192,7 @@ final class Fetch
     public function getLotteryThai(?string $date = \null): ?array
     {
         $date    = $date ?? \current_time('Y-m-d');
-        $cache   = $this->getCache('หวยรัฐบาลไทย');
+        $cache   = $this->getCache('หวยรัฐบาล');
         $expired = $cache['data'][$date]['expired'] ?? 0;
 
         if ($expired <= \current_time('timestamp')) {
@@ -212,7 +212,7 @@ final class Fetch
                 'expired' => \strtotime('+2 minute', \current_time('timestamp')),
             ];
 
-            $this->saveCache('หวยรัฐบาลไทย', $newData);
+            $this->saveCache('หวยรัฐบาล', $newData);
 
             $results = $newData[$date];
         } else {
@@ -224,7 +224,7 @@ final class Fetch
 
     public function getLotteryThaiListYears(): array
     {
-        $cache       = $this->getCache('หวยรัฐบาลไทยรายการเดือน');
+        $cache       = $this->getCache('หวยรัฐบาลรายการเดือน');
         $updateCache = \false;
 
         foreach (\range(\gmdate('Y', \current_time('timestamp')), 2016) as $year) {
@@ -277,7 +277,7 @@ final class Fetch
         }
 
         if (\true === $updateCache) {
-            $this->saveCache('หวยรัฐบาลไทยรายการเดือน', $cache['data']);
+            $this->saveCache('หวยรัฐบาลรายการเดือน', $cache['data']);
         }
 
         return $cache['data'] ?? [];

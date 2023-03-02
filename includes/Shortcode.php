@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-24 18:17:00
- * @LastEditTime: 2023-03-03 04:22:53
+ * @LastEditTime: 2023-03-03 05:13:04
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\includes\Shortcode.php
@@ -22,10 +22,12 @@ if (!\defined('ABSPATH')) {
 final class Shortcode
 {
     private Fetch $fetch;
+    private Functions $functions;
 
-    public function __construct(Fetch $fetch)
+    public function __construct(Fetch $fetch, Functions $functions)
     {
-        $this->fetch = $fetch;
+        $this->fetch     = $fetch;
+        $this->functions = $functions;
 
         $this->hook();
     }
@@ -81,9 +83,15 @@ final class Shortcode
 
         if ('วันนี้' === $atts['type']) {
             return \CheckLotteryResults\Frontend\frontendToday($this->fetch->getToDay());
-        } elseif ('หวยรัฐบาลไทย' === $atts['type']) {
+        } elseif ('หวยรัฐบาล' === $atts['type']) {
+
+            $date = !empty($_GET['lottery-date']) ? \trim($_GET['lottery-date']) : \null;
+            if (!empty($date) && !$this->functions->isDate($date)) {
+                $date = \null;
+            }
+
             return \CheckLotteryResults\Frontend\frontendSingleThaiLotto(
-                $this->fetch->getLotteryThai(),
+                $this->fetch->getLotteryThai($date),
                 $this->fetch->getLotteryThaiListYears()
             );
         } else {

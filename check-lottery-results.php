@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-21 18:02:42
- * @LastEditTime: 2023-03-03 04:22:36
+ * @LastEditTime: 2023-03-03 05:15:11
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\check-lottery-results.php
@@ -98,7 +98,7 @@ if (!class_exists('CheckLotteryResults')) {
             $this->functions  = new CheckLotteryResults\Functions();
             $this->fetch      = new CheckLotteryResults\Fetch($this->functions);
             $this->controller = new CheckLotteryResults\Controller($this->functions, $this->fetch);
-            $this->shortcode  = new CheckLotteryResults\Shortcode($this->fetch);
+            $this->shortcode  = new CheckLotteryResults\Shortcode($this->fetch, $this->functions);
         }
     }
 }
@@ -108,3 +108,8 @@ function get_check_lottery_results(): CheckLotteryResults
     return CheckLotteryResults::instance();
 }
 add_action('plugin_loaded', 'get_check_lottery_results');
+
+// Register Plugin
+require_once CHECK_LOTTERY_RESULTS_INCLUDE_PATH . 'ActDeact.php';
+register_activation_hook(CHECK_LOTTERY_RESULTS_FILE, ['CheckLotteryResults\\ActDeact', 'activate']);
+register_deactivation_hook(CHECK_LOTTERY_RESULTS_FILE, ['CheckLotteryResults\\ActDeact', 'deactivate']);

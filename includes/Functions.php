@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-21 19:48:54
- * @LastEditTime: 2023-03-03 04:04:10
+ * @LastEditTime: 2023-03-03 05:12:22
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\includes\Functions.php
@@ -110,5 +110,15 @@ final class Functions
 
         // Success, return attachment ID (int)
         return (int) $attachmentId;
+    }
+
+
+    /**
+     * @param string $date yyyy-mm-dd
+     * @return int|false
+     */
+    public function isDate(string $date)
+    {
+        return preg_match('/^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/', $date);
     }
 }
