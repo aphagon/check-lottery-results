@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-24 18:17:00
- * @LastEditTime: 2023-03-03 05:13:04
+ * @LastEditTime: 2023-03-03 05:17:12
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\includes\Shortcode.php
@@ -40,26 +40,30 @@ final class Shortcode
 
     public function enqueue(): void
     {
-        \wp_enqueue_style(
-            'check-lottery-results-style',
-            \CHECK_LOTTERY_RESULTS_URL . 'assets/style.css',
-            [],
-            \fileatime(\CHECK_LOTTERY_RESULTS_PATH . 'assets/style.css'),
-            \false
-        );
+        global $post;
 
-        \wp_enqueue_script(
-            'check-lottery-results-script',
-            \CHECK_LOTTERY_RESULTS_URL . 'assets/script.js',
-            ['jquery'],
-            \fileatime(\CHECK_LOTTERY_RESULTS_PATH . 'assets/script.js'),
-            \true
-        );
+        if (\is_a($post, 'WP_Post') && \has_shortcode($post->post_content, 'check-lottery-results')) {
+            \wp_enqueue_style(
+                'check-lottery-results-style',
+                \CHECK_LOTTERY_RESULTS_URL . 'assets/style.css',
+                [],
+                \fileatime(\CHECK_LOTTERY_RESULTS_PATH . 'assets/style.css'),
+                \false
+            );
 
-        \wp_localize_script('check-lottery-results-script', 'checkLotteryResults', [
-            'url'   => \admin_url('admin-ajax.php') . '?action=check-lottery-results',
-            'nonce' => \wp_create_nonce('check-lottery-results-nonce')
-        ]);
+            \wp_enqueue_script(
+                'check-lottery-results-script',
+                \CHECK_LOTTERY_RESULTS_URL . 'assets/script.js',
+                ['jquery'],
+                \fileatime(\CHECK_LOTTERY_RESULTS_PATH . 'assets/script.js'),
+                \true
+            );
+
+            \wp_localize_script('check-lottery-results-script', 'checkLotteryResults', [
+                'url'   => \admin_url('admin-ajax.php') . '?action=check-lottery-results',
+                'nonce' => \wp_create_nonce('check-lottery-results-nonce')
+            ]);
+        }
     }
 
     /**
