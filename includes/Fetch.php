@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-21 19:48:54
- * @LastEditTime: 2023-03-02 11:22:15
+ * @LastEditTime: 2023-03-02 16:04:33
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\includes\Fetch.php
@@ -24,6 +24,9 @@ final class Fetch
         'วันนี้',
         'หวยมาเลเซีย' => [
             'หวยมาเลเซีย',
+        ],
+        'หวยรัฐบาลไทย' => [
+            'หวยรัฐบาลไทย',
         ],
         'หวยฮานอย' => [
             'หวยฮานอย',
@@ -154,6 +157,31 @@ final class Fetch
         }
 
         $this->findOrUploadIcon($results);
+
+        return $results;
+    }
+
+    public function getLotteryThai(?string $date = \null): array
+    {
+        $results = $this->functions->curl(
+            'https://www.thairath.co.th/api-lottery/?date=' . $date ?? \current_time('Y-m-d')
+        );
+
+        $cache = $this->getCache('หวยรัฐบาลไทย');
+
+        if ('' !== $results || \null === $cache) {
+            $results = \json_decode($results, \true);
+            $results = [
+                'title'  => $results['data']['lotteryDateTitle'],
+                'result' => $results['data']['prizes'],
+            ];
+
+            if (($cache['expired'] ?? 0) <= \current_time('timestamp')) {
+                $this->saveCache('หวยรัฐบาลไทย', $results);
+            }
+        } else {
+            $results = $cache['data'];
+        }
 
         return $results;
     }

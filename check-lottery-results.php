@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-21 18:02:42
- * @LastEditTime: 2023-03-02 01:45:30
+ * @LastEditTime: 2023-03-02 15:58:52
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\check-lottery-results.php
@@ -93,6 +93,7 @@ if (!class_exists('CheckLotteryResults')) {
             require_once CHECK_LOTTERY_RESULTS_FRONTEND_PATH . 'partials/today-sub-card.php';
             require_once CHECK_LOTTERY_RESULTS_FRONTEND_PATH . 'today.php';
             require_once CHECK_LOTTERY_RESULTS_FRONTEND_PATH . 'single.php';
+            require_once CHECK_LOTTERY_RESULTS_FRONTEND_PATH . 'single-lotto-thai.php';
 
             $this->functions  = new CheckLotteryResults\Functions();
             $this->fetch      = new CheckLotteryResults\Fetch($this->functions);
