@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-25 19:09:43
- * @LastEditTime: 2023-03-02 11:07:44
+ * @LastEditTime: 2023-03-03 09:14:24
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\includes\Controller.php
@@ -34,6 +34,7 @@ final class Controller
     private function hook(): void
     {
         \add_action('wp_ajax_check-lottery-results', [$this, 'get']);
+        \add_action('wp_ajax_nopriv_check-lottery-results', [$this, 'get']);
     }
 
     public function get(): void
