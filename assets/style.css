@@ -1,7 +1,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-26 00:44:50
- * @LastEditTime: 2023-03-03 04:50:24
+ * @LastEditTime: 2023-03-03 06:18:29
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\assets\style.css
@@ -1180,6 +1180,16 @@ Custom block
 }
 .check-lottery-results-single__card-table {
   margin: 0;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-width: 1px 0 0 1px;
+}
+
+.check-lottery-results-single__card-table,
+.check-lottery-results-single__card-table td,
+.check-lottery-results-single__card-table th {
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .check-lottery-results-single__card-table th {
@@ -1190,6 +1200,7 @@ Custom block
 .check-lottery-results-single__card-table th,
 .check-lottery-results-single__card-table td {
   text-align: center;
+  padding: 8px;
 }
 
 .check-lottery-results-single__card-table tr:first-child td {

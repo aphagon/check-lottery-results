@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-21 19:48:54
- * @LastEditTime: 2023-03-03 05:09:37
+ * @LastEditTime: 2023-03-03 07:44:12
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\includes\Fetch.php
@@ -94,9 +94,9 @@ final class Fetch
     }
 
     /**
-     * @return string|bool
+     * @return string
      */
-    public function curl(string $url)
+    public function curl(string $url): string
     {
         $ch = \curl_init();
         \curl_setopt($ch, \CURLOPT_URL, $url);
@@ -107,40 +107,15 @@ final class Fetch
         \curl_setopt($ch, \CURLOPT_AUTOREFERER, \true);
         \curl_setopt($ch, \CURLOPT_RETURNTRANSFER, \true);
         \curl_setopt($ch, \CURLOPT_TIMEOUT, 15);
-        $output = \curl_exec($ch);
-        $status = \curl_getinfo($ch, \CURLINFO_RESPONSE_CODE);
+        $output     = \curl_exec($ch);
+        $statusCode = \curl_getinfo($ch, \CURLINFO_RESPONSE_CODE);
         \curl_close($ch);
 
-        if ($status >= 400) {
+        if ($statusCode >= 400) {
             return '';
         }
 
-        return $output;
-    }
-
-    private function getCache(string $key): ?array
-    {
-        $cache = \get_option('check_lottery_result_cache', \null);
-        if (\null === $cache) {
-            return \null;
-        }
-
-        $cache = \json_decode($cache, \true);
-
-        return $cache[$key] ?? \null;
-    }
-
-    private function saveCache(string $key, array $data): void
-    {
-        $cache = \get_option('check_lottery_result_cache', \null);
-        $cache = $cache ? \json_decode($cache, \true) : [];
-
-        $cache[$key] = [
-            'expired' => \strtotime('+2 minute', \current_time('timestamp')),
-            'data'    => $data,
-        ];
-
-        \update_option('check_lottery_result_cache', (string) \json_encode($cache));
+        return $output ?? '';
     }
 
     public function getToDay(): array
@@ -172,7 +147,7 @@ final class Fetch
 
     public function getHistory(string $type): array
     {
-        $results = $this->curl($this->url . '/api/v1/history/' . $type);
+        $results = $this->curl($this->url . '/api/v1/history/' . \urlencode($type));
         $cache   = $this->getCache($type);
 
         if ('' !== $results || \null === $cache) {
@@ -281,6 +256,31 @@ final class Fetch
         }
 
         return $cache['data'] ?? [];
+    }
+
+    private function getCache(string $key): ?array
+    {
+        $cache = \get_option('check_lottery_result_cache', \null);
+        if (\null === $cache) {
+            return \null;
+        }
+
+        $cache = \json_decode($cache, \true);
+
+        return $cache[$key] ?? \null;
+    }
+
+    private function saveCache(string $key, array $data): void
+    {
+        $cache = \get_option('check_lottery_result_cache', \null);
+        $cache = $cache ? \json_decode($cache, \true) : [];
+
+        $cache[$key] = [
+            'expired' => \strtotime('+2 minute', \current_time('timestamp')),
+            'data'    => $data,
+        ];
+
+        \update_option('check_lottery_result_cache', (string) \json_encode($cache));
     }
 
     private function findOrUploadIcon(array &$data): void

@@ -2,7 +2,7 @@
 /*
  * @Author: MooToons <support@mootoons.com>
  * @Date: 2023-02-27 01:44:33
- * @LastEditTime: 2023-03-02 15:20:00
+ * @LastEditTime: 2023-03-03 06:18:42
  * @LastEditors: MooToons
  * @Link: https://mootoons.com/
  * @FilePath: \check-lottery-results\frontend\single.php
@@ -52,7 +52,7 @@ function frontendSingle(array $data, ?array $sidebars = \null): string
 
             <article id="checkLotteryResultsContent" class="check-lottery-results-col-sm-<?php echo !empty($sidebars) ? '9' : '12'; ?> check-lottery-results-col-xs-12" style="padding: 0px;">
                 <section class="check-lottery-results-single__card">
-                    <h4 class="check-lottery-results-single__card-title">ผลหวยย้อนหลัง</h4>
+                    <!-- <h4 class="check-lottery-results-single__card-title">ผลหวยย้อนหลัง</h4> -->
 
                     <table class="check-lottery-results-single__card-table">
                         <thead>
